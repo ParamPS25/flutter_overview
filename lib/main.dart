@@ -27,28 +27,26 @@ class _MyAppState extends State<MyApp> {
         ),
 
         body: Center(
-         child:SizedBox(
-          
-          width: double.infinity, // will take as much as place possible
-          height: double.infinity,
+         child: (currentIndx == 0) ? Container(     // conditon if home icon => Container() else SizedBox eg:a>b?a:b
+          height: 100,
+          //color: Colors.red,
+          decoration: BoxDecoration(color: Colors.amber[700],border: Border(top:BorderSide(color: Colors.black54) )), 
           child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.end, //as not occupy height space so, using height:double.infinity can get us through
+          crossAxisAlignment: CrossAxisAlignment.end, 
           children: [
-          
-           ElevatedButton(
-            style: ElevatedButton.styleFrom(
-                foregroundColor: Colors.amber[600],  //color for btn text
-                backgroundColor: Colors.amber[100],  // color for btn background 
-                padding: const EdgeInsets.all(3),
-              ),
-            onPressed: () {
-              setState(() {
-                buttonName = "clicked";
-              });
-            },
-            child: Text(buttonName),
-          ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                  foregroundColor: Colors.amber[600],  //color for btn text
+                  backgroundColor: Colors.amber[100],  // color for btn background 
+                ),
+              onPressed: () {
+                setState(() {
+                  buttonName = "clicked";
+                });
+              },
+              child: Text(buttonName),
+            ),
         
         
            ElevatedButton(
@@ -61,14 +59,14 @@ class _MyAppState extends State<MyApp> {
           ),
         
         ],),
-        )
+        ) : const SizedBox(),
         ),
         
 
         bottomNavigationBar: BottomNavigationBar(
           items: const [
             BottomNavigationBarItem(
-                label: "Clock", icon: Icon(Icons.access_time_filled_rounded)),
+                label: "Home", icon: Icon(Icons.add_home_outlined)),
             BottomNavigationBarItem(
                 label: "email", icon: Icon(Icons.alternate_email_rounded)),
           ],
