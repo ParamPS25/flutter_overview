@@ -22,10 +22,14 @@ class _MyAppState extends State<MyApp> {
       home: Scaffold(
         backgroundColor: Colors.green[800],
         appBar: AppBar(
-          title: const Text('App title'),
+          title: const Text('App Bar tittle'),
+          foregroundColor: Colors.green[200],
         ),
 
-        body: Center(
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+          Center(
           child: ElevatedButton(
             onPressed: () {
               setState(() {
@@ -35,6 +39,18 @@ class _MyAppState extends State<MyApp> {
             child: Text(buttonName),
           ),
         ),
+        Center(
+          child: ElevatedButton(
+            onPressed: () {
+              setState(() {
+                buttonName = "clicked";
+              });
+            },
+            child: Text(buttonName),
+          ),
+        ),
+        ],),
+        
 
         bottomNavigationBar: BottomNavigationBar(
           items: const [
