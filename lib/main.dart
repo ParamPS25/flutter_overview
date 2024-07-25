@@ -30,12 +30,18 @@ class _MyAppState extends State<MyApp> {
          child:SizedBox(
           
           width: double.infinity, // will take as much as place possible
-          child: Column(
+          height: double.infinity,
+          child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.end, //as not occupy height space so, using height:double.infinity can get us through
           children: [
           
            ElevatedButton(
+            style: ElevatedButton.styleFrom(
+                foregroundColor: Colors.amber[600],  //color for btn text
+                backgroundColor: Colors.amber[100],  // color for btn background 
+                padding: const EdgeInsets.all(3),
+              ),
             onPressed: () {
               setState(() {
                 buttonName = "clicked";
@@ -55,7 +61,7 @@ class _MyAppState extends State<MyApp> {
           ),
         
         ],),
-        ),
+        )
         ),
         
 
