@@ -28,10 +28,14 @@ class _MyAppState extends State<MyApp> {
 
         body: Center(
          child: (currentIndx == 0) ? Container(     // conditon if home icon => Container() else SizedBox eg:a>b?a:b
-          height: 100,
+          height: 500,
+          alignment: Alignment.center, //
           //color: Colors.red,
-          decoration: BoxDecoration(color: Colors.amber[700],border: Border(top:BorderSide(color: Colors.black54) )), 
-          child: Row(
+          decoration: BoxDecoration(
+            color: Colors.amber[700],border: Border(top:BorderSide(color: Colors.black54) ),
+            image: const DecorationImage(image: AssetImage("images/amazing_building.png")),
+            ),
+          child: Row(                                      // child of container
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.end, 
           children: [
@@ -47,7 +51,7 @@ class _MyAppState extends State<MyApp> {
               },
               child: Text(buttonName),
             ),
-        
+
         
            ElevatedButton(
             onPressed: () {
@@ -59,7 +63,7 @@ class _MyAppState extends State<MyApp> {
           ),
         
         ],),
-        ) : const SizedBox(),
+        ) : Image.network("https://cdn.pixabay.com/photo/2016/09/08/18/45/cube-1655118_640.jpg", height: 200, width: 300,),// to load img from network/http
         ),
         
 
@@ -82,3 +86,6 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
+
+//The # symbol in pubspec.yaml is used to denote comments. Anything on a line after a # is ignored by the YAML parser and is not executed as part of the configuration. It’s a way to add notes or disable code without deleting it.
+// all images inside images/ folder is accesible to flutter as modified assets in pubspec.yaml  
