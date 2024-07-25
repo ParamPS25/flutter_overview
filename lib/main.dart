@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
@@ -26,11 +26,16 @@ class _MyAppState extends State<MyApp> {
           foregroundColor: Colors.green[200],
         ),
 
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+        body: Center(
+         child:SizedBox(
+          
+          width: double.infinity, // will take as much as place possible
+          child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-          Center(
-          child: ElevatedButton(
+          
+           ElevatedButton(
             onPressed: () {
               setState(() {
                 buttonName = "clicked";
@@ -38,9 +43,9 @@ class _MyAppState extends State<MyApp> {
             },
             child: Text(buttonName),
           ),
-        ),
-        Center(
-          child: ElevatedButton(
+        
+        
+           ElevatedButton(
             onPressed: () {
               setState(() {
                 buttonName = "clicked";
@@ -48,8 +53,10 @@ class _MyAppState extends State<MyApp> {
             },
             child: Text(buttonName),
           ),
-        ),
+        
         ],),
+        ),
+        ),
         
 
         bottomNavigationBar: BottomNavigationBar(
