@@ -14,54 +14,26 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: FirstPage(), 
-         
-    );
-  }
-}
-
-class FirstPage extends StatelessWidget {
-  const FirstPage({super.key});
+  bool isClicked = true;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-          appBar: AppBar(
-            title: const Text("title"),
+    return MaterialApp(
+      home: Scaffold(
+        body: Center(
+          child: GestureDetector(
+            onTap: () {                   //This triggers when the tap gesture wins
+              setState(() {               //Notify the framework that the internal state of this object has changed
+                isClicked = (!isClicked); // if img clicked will set bool isclicked to false as NOT condition vice versa
+              });
+            },
+            child: isClicked
+                ? Image.network(
+                    "https://cdn.pixabay.com/photo/2016/09/08/18/45/cube-1655118_640.jpg")
+                : Image.asset("images/amazing_building.png"),
           ),
-          body: Center(
-            child:ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.blueAccent[100],
-              ),
-              child: const Text("press to route"),
-              onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder:(BuildContext context){
-                return const SecondPage();
-              } )),
-            ), 
-          ),
-      );
-  }
-}
-
-class SecondPage extends StatelessWidget {
-  const SecondPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: true, //leading given on appbar eg: <- btn which route to previous navigation
         ),
-      backgroundColor: Colors.amber[200],
-      body: const Center(
-        child: Text("you are now on SecondPage from FirstPage"),
-        
-    )
+      ),
     );
   }
 }
-
